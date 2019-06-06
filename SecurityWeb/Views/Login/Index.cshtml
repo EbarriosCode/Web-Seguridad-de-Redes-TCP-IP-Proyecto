@@ -1,0 +1,254 @@
+﻿@model SecurityWeb.Models.Usuario
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="container-fluid" style="margin-top:10px;">
+    <center><img style="width:200px; height:150px;" src="~/images/tomala.jpg" /></center>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3" style="padding-right: 0px!important;padding-left: 0px!important;">
+            <div class="panel-body" style="padding-right: 4px!important;padding-left: 4px!important;">
+                <form class="form-horizontal" asp-controller="Login" asp-action="Login" method="post" id="login" name="login" role="form" AUTOCOMPLETE="off">
+                    <fieldset style="min-width: 0;padding:.35em .625em .75em!important;margin:0 2px;border: 2px solid silver!important;margin-bottom: 10em;box-shadow: -6px 15px 20px 0px;">
+                        <legend id="first3" style="width: inherit;padding:inherit;border:2px solid silver;" class="legend">Usuario</legend>
+                        <legend id="myId8" class="hidden legend" style="width: inherit;padding:inherit;border:2px solid silver;">Contraseña</legend>
+
+                        <div class="form-group" id="above" style="margin-bottom: 5px!important;">
+                            <div class="col-sm-1 col-md-2 col-lg-2 col-xs-1"></div>
+                            <output class="col-sm-10 col-md-8 col-lg-8 col-xs-10"
+                                    id="responseFail" type="text"
+                                    style="text-align: center; font-weight: bold; color: red;padding: 0px!important;"></output>
+                            <div class="col-sm-1 col-md-2 col-lg-2 col-xs-1"></div>
+                        </div>
+                        <div class="form-group" style="margin-bottom: 5px!important;">
+                            <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12" id="message" style="font-weight: bold; text-align: center;font-size: 10pt;">
+                            </div>
+                        </div>
+                        <div class="form-group" id="first" style="margin-bottom: 0px!important;">
+                            <div class="col-sm-1 col-md-1 col-lg-1 col-xs-1"></div>
+                            <div class="col-sm-10 col-md-10 col-lg-10 col-xs-10 input-group">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-user" style="color: black;"></span></span>
+                                <input type="text" class="form-control" id="username" asp-for="UserName" placeholder="Ingrese su Nombre de Usuario">
+                            </div>
+                            <div class="col-sm-1 col-md-1 col-lg-1 col-xs-1"></div>
+                        </div>
+                        <div class="form-group" id="first2">
+                            <div class="col-sm-1 col-md-1 col-lg-1 col-xs-1"></div>
+                            <div class="col-sm-10 col-md-10 col-lg-10 col-xs-10"
+                                 style="text-align: right;padding-right: 0px;">
+                            </div>
+                            <div class="col-sm-1 col-md-1 col-lg-1 col-xs-1"></div>
+                        </div>
+                        <div class="form-group" id="first1">
+                            <div class="col-sm-1 col-md-1 col-lg-1 col-xs-1"></div>
+                            <div class="col-sm-11 col-md-11 col-lg-11 col-xs-10" style="text-align:center;">
+                                <button id="valuser" type="button" onclick="valUsername()"
+                                        class="btn btn-primary customizedPrimaryBtn">
+                                    Siguiente
+                                </button>
+                            </div>
+                            <div class="col-sm-1 col-md-1 col-lg-1 col-xs-1"></div>
+                        </div>
+
+                        <div class="form-group hidden" id="myId1" style="margin-bottom: 0px!important;">
+
+                            <div class="col-sm-1 col-md-1 col-lg-1 col-xs-1"></div>
+                            <div class="col-sm-10 col-md-10 col-lg-10 col-xs-10 input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-lock" style="color: black;"></span>
+                                </span> <input type="password" class="form-control" id="password" asp-for="Password"
+                                               style="width: 100%;" placeholder="Ingrese su Contraseña"><span class="input-group-btn">
+                                    <button class="btn btn-defaultCUST" id="view_button"
+                                            style="height: 34px;border-color: #ccc;"
+                                            type="button">
+                                        <span class="glyphicon glyphicon-eye-open"></span>
+                                    </button>
+                                </span>
+                            </div>
+                            <div class="col-sm-1 col-md-1 col-lg-1 col-xs-1"></div>
+                        </div>
+                        <div class="form-group hidden" id="myId4">
+                            <div class="col-sm-1 col-md-1 col-lg-1 col-xs-1"></div>
+                            <div class="col-sm-10 col-md-10 col-lg-10 col-xs-10"
+                                 style="text-align: right;padding-right: 0px;">
+                                @*<a href="~/Login/Recovery" style="color: teal;">Olvidó su contraseña?</a>*@
+                            </div>
+                            <div class="col-sm-1 col-md-1 col-lg-1 col-xs-1"></div>
+                        </div>
+                        <div class="form-group hidden" id="myId3">
+                            <div class="col-sm-1 col-md-1 col-lg-1 col-xs-1"></div>
+                            <div class="col-sm-11 col-md-11 col-lg-11 col-xs-10 button_Pad" style="text-align:center">
+                                <button type="button" onclick="prevPage()"
+                                        class="btn btn-primary"
+                                        style=" font-size: 13px;">
+                                    Regresar
+                                </button>
+
+
+                                <button id="submitbtn" type="submit"
+                                        class="btn btn-success"
+                                        style=" font-size: 13px;">
+                                    Entrar
+                                </button>
+                            </div>
+                            <div class="col-sm-1 col-md-1 col-lg-1 col-xs-1"></div>
+                        </div>
+                        <div class="form-group" style="text-align:center;font-weight:bold">
+                            Inicia Sesión, hackeame si puedes puto!
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<style>
+    .profile-img-card {
+        width: 96px;
+        height: 96px;
+        margin: 0 auto 0;
+        display: block;
+        -moz-border-radius: 50%;
+        -webkit-border-radius: 50%;
+        border-radius: 50%;
+    }
+</style>
+<script>
+    $(document).ready(function () {
+        document.getElementById("username").focus();
+
+        $("#username").keypress(function (e) {
+            var code = (e.keyCode ? e.keyCode : e.which);
+            if (code == 13) {
+                //alert("presionaste enter");
+                valUsername();
+                return false;
+            }
+        });
+
+        $("#view_button").bind("mousedown touchstart", function () {
+            $("#password").attr("type", "text");
+        }), $("#view_button").bind("mouseup touchend", function () {
+            $("#password").attr("type", "password");
+        });
+    });
+    function valUsername() {
+        if (document.getElementById("username").value.trim() === "" && document.getElementById("username").value !== null) {
+            $('#responseFail').val('');
+            $('#username').val('');
+
+            // $("#above").addClass('hidden');
+            $('#message').css('color', 'red');
+            $('#message').html('Porfavor ingrese un Nombre de Usuario');
+
+            $('input:text').focus(
+                function () {
+                    $(this).css({ 'border-color': 'red' });
+                    $(this).css({ 'box-shadow': 'inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #f15f5f' });
+                });
+
+            $('input:text').blur(
+                function () {
+                    $(this).css({ 'border-color': '#ccc' });
+                    $(this).css({ 'box-shadow': 'none' });
+                });
+
+            $('#username').css({ 'border-color': 'red' });
+            $('#username').css({ 'box-shadow': 'inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #f15f5f' });
+            document.getElementById("username").focus();
+            return false;
+        }
+        else {
+            var name = $('#username').val();
+            if (name == "admin" || name == "Admin" || name == "ADMIN") {
+                //$("#above").removeClass('hidden');
+                $('#message').html('');
+                $('input:text').focus(
+                    function () {
+                        $(this).css({ 'border-color': 'red' });
+                        $(this).css({ 'box-shadow': 'inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #f15f5f' });
+                    });
+                document.getElementById("username").focus();
+                $('#responseFail').css({ 'color': 'red' });
+                $('#responseFail').text('Has ingresado un nombre de usuario no válido');
+
+            }
+            else {
+                $('#responseFail').css({ 'color': '#555' });
+                $('#responseFail').text('Ingrese Contraseña para ' + name);
+
+                $("#first").addClass('hidden');
+                //  $("#above").addClass('hidden');
+                $("#first1").addClass('hidden');
+                $("#first2").addClass('hidden');
+                $("#first3").addClass('hidden');//to hide
+
+                // $("#myId").removeClass('hidden');	//to show
+                $("#myId1").removeClass('hidden');
+                $("#myId2").removeClass('hidden');
+                $("#myId3").removeClass('hidden');
+                $("#myId4").removeClass('hidden');
+
+                $("#myId8").removeClass('hidden');
+                $('#message').html('');
+                // $('#message1').html('');
+
+                $('input:password').focus(
+                    function () {
+                        $(this).css({ 'border-color': '#66afe9' });
+                        $(this).css({ 'box-shadow': 'inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6)' });
+                    });
+                $('input:password').blur(
+                    function () {
+                        $(this).css({ 'border-color': '#ccc' });
+                        $(this).css({ 'box-shadow': 'none' });
+                    });
+
+                $('Response').html('Ingrese la Contraseña para ');
+                document.getElementById("password").focus();
+            }
+        }
+    }
+    function prevPage() {
+        $('#message').html('');
+        // $('#message1').html('');
+        $('#password').val('');
+        $('#responseFail').val('');
+
+        $("#first").removeClass('hidden');
+        $("#first1").removeClass('hidden');
+        $("#first2").removeClass('hidden');
+        $("#first3").removeClass('hidden');//to hide
+
+        //$("#myId").addClass('hidden');	//to show
+        $("#myId1").addClass('hidden');
+        $("#myId2").addClass('hidden');
+        $("#myId3").addClass('hidden');
+        $("#myId4").addClass('hidden');
+
+        $("#myId8").addClass('hidden');
+        $('#ajaxResponse').css('color', '#555');
+        $('input:text').focus(
+            function () {
+                $(this).css({ 'border-color': '#66afe9' });
+                $(this).css({ 'box-shadow': 'inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6)' });
+            });
+        $('input:text').blur(
+            function () {
+                $(this).css({ 'border-color': '#ccc' });
+                $(this).css({ 'box-shadow': 'none' });
+            });
+
+        // document.getElementById("username").blur();// to remove auto focus on usename after back is clicked
+        document.getElementById("username").focus();
+    }
+</script>
+
+
+
