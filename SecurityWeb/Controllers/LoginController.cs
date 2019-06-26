@@ -46,7 +46,7 @@ namespace SecurityWeb.Controllers
 
             }
 
-            return RedirectToAction("Index");
+            return View("Index", model);
         }
 
         public IActionResult Logout()
