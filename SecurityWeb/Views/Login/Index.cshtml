@@ -9,6 +9,7 @@
         <div class="col-md-6 col-md-offset-3" style="padding-right: 0px!important;padding-left: 0px!important;">
             <div class="panel-body" style="padding-right: 4px!important;padding-left: 4px!important;">
                 <form class="form-horizontal" asp-controller="Login" asp-action="Login" method="post" id="login" name="login" role="form" AUTOCOMPLETE="off">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <fieldset style="min-width: 0;padding:.35em .625em .75em!important;margin:0 2px;border: 2px solid silver!important;margin-bottom: 10em;box-shadow: -6px 15px 20px 0px;">
                         <legend id="first3" style="width: inherit;padding:inherit;border:2px solid silver;" class="legend">Usuario</legend>
                         <legend id="myId8" class="hidden legend" style="width: inherit;padding:inherit;border:2px solid silver;">Contraseña</legend>

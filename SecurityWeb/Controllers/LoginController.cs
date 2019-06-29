@@ -25,8 +25,10 @@ namespace SecurityWeb.Controllers
             return View();
         }       
 
+        
         [HttpPost]
-        public IActionResult Login(Usuario model)
+        [ValidateAntiForgeryToken]
+        public IActionResult Login([Bind("UserName,Password")] Usuario model)
         {
             if (ModelState.IsValid)
             {

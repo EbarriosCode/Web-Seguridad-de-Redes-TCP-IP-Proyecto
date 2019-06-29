@@ -58,6 +58,15 @@ namespace SecurityWeb
             }).AddCookie(options => { options.LoginPath = "/Login"; });
 
             services.AddAuthorization();
+
+            // Agregar Antifogery-Token (XSRF / CSRF)
+            services.AddAntiforgery(options =>
+            {
+                // Set Cookie properties using CookieBuilder properties†.
+                options.FormFieldName = "AntiforgeryFieldname";
+                options.HeaderName = "X-CSRF-TOKEN-HEADERNAME";
+                options.SuppressXFrameOptionsHeader = false;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
